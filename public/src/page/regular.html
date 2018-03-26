@@ -1,0 +1,60 @@
+<div class="todolist">
+    <header class="header">
+        <h1>Reg-Todo</h1>
+        <input class="new-todo" on-enter={ this.addTodo(newTodoTitle) } r-model={ newTodoTitle } placeholder="What needs to be done?"
+            autofocus>
+    </header>
+    <input class="toggle-all" type="checkbox" r-model={ allCompleted }>
+    <label for="toggle-all">Mark all as complete</label>
+    <ul id="list-box" class="todo-list">
+        {#list this.todoFilter() as todo}
+        <todoItem todo={ todo } filter={filter} on-remove={ this.removeTodo(todo) } on-edit={ this.edit(todo) }></todoItem>
+        {/list}
+    </ul>
+    <footer class="footer" r-hide={todos.length===0}>
+        <!-- <span class="todo-count"> -->
+        <ul class="filters">
+            <li>
+                <a class="todo-count footer-info">
+                    <strong class="i-flag">{this.todoFilter(filter).length}</strong>
+                    <span>items left</span>
+                </a>
+            </li>
+            <li>
+                <a r-class={{ 'selected':filter.state==='all' ||!filter}} on-click={ filter={ state: 'all',tag:[]} }>All</a>
+            </li>
+            <li>
+                <a r-class={{ 'selected':filter.state==='active' }} on-click={ filter={ state: 'active',tag:[]} }>Active</a>
+            </li>
+            <li>
+                <a r-class={{ 'selected':filter.state==='completed' }} on-click={ filter={ state: 'completed',tag:[]} }>Completed</a>
+            </li>
+
+            <li>
+                <a class="clear-completed i-flag" on-click={ this.clearCompleted() }>Clear completed</a>
+            </li>
+        </ul>
+        <!-- <button class="clear-completed">Clear completed</button> -->
+    </footer>
+    <div class="footer-regular-selected"  r-hide={todos.length===0}>
+        <li>
+            <a class="tag-selected">Selected: {filterSelected}
+                <span class="i-flag"></span>
+            </a>
+        </li>
+    </div>
+</div>
+<footer class="info">
+    <p>输入框：点击以输入，Enter添加，左侧箭头点击可设置所有todo的状态为completed或者active</p>
+    <p>item：左侧点击以切换todo的状态，点击描述以及编辑图标可打开详细框，用于编辑和查看详细信息</p>
+    <p>item：右侧X图标可以点击以删除todo，标签可以点击以筛选todo，标签可以多级点击筛选</p>
+    <p>底部：左侧显示当前显示的todo数，中间可以依据状态筛选todo</p>
+    <p>底部：先点击状态筛选，再点击标签可以联合筛选，再次点击状态筛选可清除标签筛选</p>
+    <p>底部：Selected显示当前筛选标签，clear completed清除所有completed标签</p>
+    <a href="/index" class="switch-nej-reg">由此前往NEJ版本的TodoDemo</a>
+</footer>
+
+
+<div class="mask" id="mask-id" r-hide="editing" on-click={editing=true}>
+    <todoDetail editing = {editing} on-click={ this.hidemask($event) } id='todo-detail' todo={ todoEditing } on-refresh={ this.refreshList() }></todoDetail>
+</div>

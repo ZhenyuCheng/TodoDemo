@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<!-- 页面入口文件 -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width">
+    <meta name="description" content="<%= description %>" />
+    <meta name="keywords" content="<%= description %>" />
+    <title>
+        <%= title %>
+    </title>
+    <link href="/src/module/common/base.css" rel="stylesheet" />
+    <link href="/src/module/common/animation.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="todoapp"></div>
+    <script src="/src/lib/Sortable/Sortable.js"></script>
+    <!-- @DEFINE -->
+    <script src="/src/lib/nej/src/define.js?pro=../src/"></script>
+    <script src="/src/lib/regularjs/dist/regular.js"></script>
+    <script>
+        NEJ.define([
+            'pro/module/todo.ajax/todoAjax',
+            'pro/page/regularTodo'
+        ], function (_opreation, TodoApp) {
+            let _itemData = [];
+            _opreation.getAllList(function (_data) {
+                if (_data.code === 0) {
+                    _itemData = _data.result;
+                } else {
+                    alert(_data.msg);
+                }
+                __refreshList(_itemData);
+            }, function (err) {
+                __refreshList(_itemData);
+                alert(err);
+            });
+
+            function __refreshList(_data) {
+                var todoApp = new TodoApp({
+                    data: {
+                        todos: _data,
+                        editing: true,
+                        todoEditing: {
+                            state: 'complete',
+                            tag: []
+                        },
+                    },
+                }).$inject('#todoapp');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "nejdemo",
+  "version": "1.0.0",
+  "dependencies": {
+    "nej": "master",
+    "regularjs": "~0.3.0",
+    "Sortable": "sortablejs#^1.6.0"
+  }
+}

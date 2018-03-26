@@ -1,0 +1,33 @@
+<div class="detail-view">
+
+    <div class="widget">
+        <h4 class="title">基本信息
+            <small>（单击以编辑Todo的信息，输入完成按Enter可立即保存）</small>
+        </h4>
+        <div class="content j-flag">
+            <label class="basic-info description-label" for="description-input">描述</label>
+            <input class="basic-info description info-flag" data-action="editdescription" id="description-input" placeholder="点击修改描述">
+
+            <label class="basic-info description-label" for="description-state">状态</label>
+            <select class="basic-info state info-flag"  value="completed" data-action="editstate" id="description-state">
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <label class="basic-info description-label" for="description-remark">备注</label>
+            <input class="basic-info remark info-flag" data-action="editremark" id="description-remark" placeholder="点击修改备注">
+        </div>
+    </div>
+    <div class="widget">
+        <h4 class="title">标签
+            <small>（拖动标签以排序，最前面的三个标签将在主界面显示，以筛选Todo）</small>
+        </h4>
+        <div class="content tag-cloud">
+            <div class="detail-tags j-flag"></div>
+        </div>
+    </div>
+    <div class="widget">
+        <div class="detail-footer"></div>
+        <button class="info-save j-flag" data-action="save-info">保存</button>
+    </div>
+</div>

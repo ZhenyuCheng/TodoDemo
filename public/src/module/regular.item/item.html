@@ -1,0 +1,20 @@
+<li>
+  <div class="view">
+    <div data-action="update">
+      <input class="toggle" type="checkbox" on-click={ this.toggle() } r-model={ completed }>
+    </div>
+    <label class="todo-description" r-class={ { 'completed': todo.state==='completed' } } on-click={this.editTodo()}>{todo.description}</label>
+    <div class="func j-flag">
+      <div class="tags">
+        {#list tags3 as tagShow}
+        <a class="tag-show" on-click={ this.filterByTag(tagShow) }> {tagShow.name}</a>
+        {/list}
+      </div>
+      <div class="item-operation">
+        <a class="edit-icon" on-click={this.editTodo()}></a>
+        <button class="destroy" on-click={this.remove()}></button>
+      </div>
+    </div>
+  </div>
+  <input class="edit" data-action="edit">
+</li>

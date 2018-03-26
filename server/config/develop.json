@@ -1,0 +1,10 @@
+{
+    "database": {
+        "db": "mysql",
+        "username": "root",
+        "password": "542913870",
+        "database": "todoDemo",
+        "host": "localhost",
+        "dialect": "mysql"
+    }
+}

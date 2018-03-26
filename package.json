@@ -1,0 +1,29 @@
+{
+    "name": "todoDemo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node ./app.js",
+        "test": "node ./test/run_tests.js"
+    },
+    "author": "",
+    "license": "UNLICENSED",
+    "engines": {
+        "node": ">=4.2.0"
+    },
+    "dependencies": {
+        "bluebird": "^3.4.6",
+        "ejs": "^2.3.1",
+        "mysql2": "^1.5.2",
+        "node-webserver": "0.0.83",
+        "sequelize": "^4.33.2",
+        "underscore": "^1.8.3"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-livereload": "^3.8.1",
+        "mcss": "^0.5.1",
+        "mocha": ">=2.0.1"
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<!-- 页面入口文件 -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width">
+    <meta name="description" content="<%= description %>" />
+    <meta name="keywords" content="<%= description %>" />
+    <title>
+        <%= title %>
+    </title>
+    <link href="/src/module/common/base.css" rel="stylesheet" />
+    <link href="/src/module/common/animation.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="template-box" style="display:none;">
+        <textarea name="html" data-src="/src/page/index.html"></textarea>
+    </div>
+    <div id="top-id"></div>
+    <script src="/src/lib/Sortable/Sortable.js"></script>
+    <!-- @DEFINE -->
+    <script src="/src/lib/nej/src/define.js?pro=../src/"></script>
+    <script>
+        NEJ.define([
+            'base/event',
+            'util/dispatcher/dispatcher',
+            'util/template/tpl',
+            'util/dispatcher/test'
+        ], function (_v, _e, _t, _test) {
+            _e._$startup({
+                // 规则配置
+                rules: {
+                    rewrite: {
+                        // 重写规则配置
+                    },
+                    title: {
+                        // 标题配置
+                    },
+                    alias: {
+                        "layout-system":"/m",
+                    }
+                },
+                // 模块配置
+                modules: {
+                    '/m': {
+                        module: '/src/page/index.html',
+                    },
+                },
+                tid: 'template-box'
+            });
+        });
+    </script>
+</body>
+
+</html>

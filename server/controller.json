@@ -1,0 +1,38 @@
+{
+  "rootPath": "/server/controller",
+  "controllers": [{
+      "path": "/",
+      "handler": "page.index"
+    }, {
+      "path": "/index",
+      "handler": "page.index"
+    },
+    {
+      "path": "/regular",
+      "handler": "page.regular"
+    },
+    {
+      "method": "GET",
+      "path": "/api/todos/",
+      "handler": "todos.list"
+    },
+    {
+      "method": "POST",
+      "path": "/api/todos/",
+      "handler": "todos.add"
+    },
+    {
+      "method": "PATCH",
+      "regPath": "/api/todos/([^/.]+)",
+      "handler": "todos.update"
+    }, {
+      "method": "DELETE",
+      "regPath": "/api/todos/([^/.]+)",
+      "handler": "todos.deleteById"
+    }, {
+      "method": "DELETE",
+      "path": "/api/todos/",
+      "handler": "todos.delete"
+    }
+  ]
+}
